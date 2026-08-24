@@ -3356,7 +3356,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xpjmoaqssc");
 </script>
-  <meta name="generator" content="HubSpot"></head>
+  <meta name="generator" content="HubSpot">
+<style>
+/* XY Premium Scroll Animations */
+.xy-reveal-up {
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: opacity, transform;
+}
+.xy-reveal-up.xy-active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+/* Staggering for lists or grids if needed, but handled organically by scroll position */
+</style>
+
+</head>
   
   <body class="body-wrapper   hs-content-id-215690075063 hs-landing-page hs-page  theme-overrides">
 <!--  Added by GoogleTagManager integration -->
@@ -5018,5 +5034,39 @@ var hsVars = {
 <!-- End Google Tag Manager (noscript) -->
 
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Dynamically target major elements for animation
+    const targets = document.querySelectorAll('.dnd-section, h1, h2, h3, .hs-button, img');
+    
+    // Add the base class
+    targets.forEach(el => {
+        // Skip header/navigation elements so they don't fade in weirdly
+        if(!el.closest('header') && !el.closest('.header') && !el.closest('.site-header')) {
+            el.classList.add('xy-reveal-up');
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add slight delay based on element's position on screen for staggered effect
+                setTimeout(() => {
+                    entry.target.classList.add('xy-active');
+                }, 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    // Observe all targeted elements
+    document.querySelectorAll('.xy-reveal-up').forEach(el => observer.observe(el));
+});
+</script>
+
 </body></html>
 

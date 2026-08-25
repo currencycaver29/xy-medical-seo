@@ -3810,6 +3810,35 @@
 }
 </style>
 
+
+<style>
+/* XY Premium: Glassmorphism Header */
+.hs-elevate-header {
+  /* Frosted Glass Effect */
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  
+  /* Premium Border & Shadow */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+  
+  /* Ensure it sits above content */
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+/* Force inner layout wrappers to be transparent so the blur shows through */
+.hs-elevate-header .container-fluid,
+.hs-elevate-header .row-fluid-wrapper,
+.hs-elevate-header .row-fluid,
+.hs-elevate-header .dnd-section,
+.hs-elevate-header .widget-span {
+  background: transparent !important;
+}
+</style>
+
 </head>
 
   <body

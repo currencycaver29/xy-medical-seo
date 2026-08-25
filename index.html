@@ -3778,6 +3778,37 @@
       /* Staggering for lists or grids if needed, but handled organically by scroll position */
     </style>
   <style>.splide__toggle { display: none !important; }</style>
+
+<style>
+/* XY Premium: Modal Mobile Responsiveness */
+@media (max-width: 768px) {
+  #xy-modal-content {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    height: 90vh !important;
+    max-height: none !important;
+  }
+  /* Calendly Container on Mobile */
+  #xy-modal-content > div:nth-of-type(1) {
+    min-height: 500px !important;
+    flex: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+  /* Email Container on Mobile */
+  #xy-modal-content > div:nth-of-type(2) {
+    flex: none !important;
+    padding: 40px 20px !important;
+  }
+  #xy-modal-close {
+    top: 10px !important;
+    right: 10px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+  }
+}
+</style>
+
 </head>
 
   <body

@@ -8914,5 +8914,40 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<script>
+// DocWind Premium: Magnetic Buttons
+document.addEventListener("DOMContentLoaded", () => {
+  // Target all HubSpot buttons and our custom modal email button
+  const magneticElements = document.querySelectorAll('.hs-button, a[href^="https://mail.google.com"]');
+  
+  magneticElements.forEach((el) => {
+    // Add smooth transition for snapping back
+    el.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease, box-shadow 0.2s ease';
+    
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      // Calculate distance from center of button
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // Pull strength (how far it moves)
+      const pullX = 15; 
+      const pullY = 15;
+      
+      const moveX = (x / (rect.width / 2)) * pullX;
+      const moveY = (y / (rect.height / 2)) * pullY;
+      
+      el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      // Snap back to original position
+      el.style.transform = 'translate(0px, 0px)';
+    });
+  });
+});
+</script>
 </body>
+
 </html>

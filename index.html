@@ -3756,6 +3756,61 @@
   <body
     class="body-wrapper hs-content-id-215690075063 hs-landing-page hs-page theme-overrides"
   >
+
+<style>
+/* 1. Interactive 'Lift' Hover States */
+.dnd-section:not(.hs-elevate-header):not(.hs-elevate-footer) .row-fluid-wrapper {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 12px;
+}
+.dnd-section:not(.hs-elevate-header):not(.hs-elevate-footer) .row-fluid-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+/* 2. Smooth Page Pre-loader */
+#docwind-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(0, 156, 222, 0.2);
+  border-left-color: #009cde;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<div id="docwind-preloader">
+  <div class="spinner"></div>
+</div>
+
+<script>
+// Fade out pre-loader smoothly when page is fully loaded
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('docwind-preloader');
+  if (preloader) {
+    preloader.style.opacity = '0';
+    preloader.style.visibility = 'hidden';
+    setTimeout(() => { preloader.remove(); }, 800);
+  }
+});
+</script>
+
     
 
     <div

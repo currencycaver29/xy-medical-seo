@@ -3839,7 +3839,35 @@
 }
 </style>
 
+
+<style>
+/* DocWind Premium: Typography Readability */
+p, li, .hs-richtext p, .hs-richtext li, span {
+    font-size: 17px !important;
+    color: #111827 !important; /* Much darker gray/black */
+    font-weight: 500 !important; /* Slightly thicker */
+    line-height: 1.65 !important;
+}
+
+/* Protect Headers and Buttons */
+h1, h2, h3, h4, h5, h6, .hs-button, a, .hs-elevate-header span, .hs-elevate-header p, .hs-elevate-header li {
+    /* Let headings and buttons keep their own styling */
+}
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span, a span {
+    font-size: inherit !important;
+    color: inherit !important;
+    font-weight: inherit !important;
+}
+
+/* Protect Footer */
+.hs-elevate-footer p, 
+.hs-elevate-footer li,
+.hs-elevate-footer span {
+    color: #e5e7eb !important; /* Light text for black background */
+}
+</style>
 </head>
+
 
   <body
     class="body-wrapper hs-content-id-215690075063 hs-landing-page hs-page theme-overrides"

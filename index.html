@@ -8723,10 +8723,10 @@ window.addEventListener('load', () => {
   
 <!-- DocWind Premium Master Popup Modal -->
 <div id="xy-master-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 999999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
-  <div style="background: #fff; width: 90%; max-width: 500px; max-height: 90vh; border-radius: 16px; display: flex; flex-direction: column; overflow-y: auto; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transform: translateY(20px); transition: transform 0.3s ease; padding: 50px 30px 30px 30px;" id="xy-modal-content">
+  <div style="background: #fff; width: 90%; max-width: 500px; max-height: 90vh; border-radius: 16px; display: block; overflow-y: auto; overflow-x: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transform: translateY(20px); transition: transform 0.3s ease; padding: 50px 30px 30px 30px;" id="xy-modal-content">
     
     <!-- Close Button -->
-    <button id="xy-modal-close" style="position: absolute; top: 15px; right: 20px; background: #ef4444; border: none; font-size: 24px; cursor: pointer; color: #ffffff; z-index: 10; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">&times;</button>
+    <button id="xy-modal-close" style="position: fixed; top: 15px; right: 20px; background: #ef4444; border: none; font-size: 24px; cursor: pointer; color: #ffffff; z-index: 10; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">&times;</button>
     
     <!-- Header -->
     <div style="text-align: center; margin-bottom: 30px;">
@@ -8736,7 +8736,7 @@ window.addEventListener('load', () => {
 
     <!-- HubSpot Form -->
     <script src="https://js-na2.hsforms.net/forms/embed/247168760.js" defer></script>
-    <div class="hs-form-frame" data-region="na2" data-form-id="7a476059-a566-4a86-91aa-b35712f45d3c" data-portal-id="247168760"></div>
+    <div class="hs-form-frame" data-region="na2" data-form-id="7a476059-a566-4a86-91aa-b35712f45d3c" data-portal-id="247168760" style="min-height: 550px;"></div>
     
   </div>
 </div>

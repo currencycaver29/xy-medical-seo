@@ -8738,8 +8738,8 @@ window.addEventListener('load', () => {
     <iframe src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="DocWind Form" style="border: none; width: 100%; min-height: 600px; background: transparent;"></iframe>
     <script async src="https://tally.so/widgets/embed.js"></script>
     
-    <script>
-      // Listen for Tally form submission to hide the logo and title instantly
+        <script>
+      // Listen for Tally form submission to hide the logo and title instantly, and auto-close after 3 seconds
       window.addEventListener('message', (e) => {
         if (typeof e.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
           const header = document.getElementById('xy-modal-header');
@@ -8747,6 +8747,25 @@ window.addEventListener('load', () => {
             header.style.opacity = '0';
             setTimeout(() => { header.style.display = 'none'; }, 300);
           }
+          
+          // Auto-close the entire modal after 3 seconds to hide Tally branding
+          setTimeout(() => {
+            const modal = document.getElementById('xy-master-modal');
+            const modalContent = document.getElementById('xy-modal-content');
+            if (modal && modalContent) {
+              modalContent.style.opacity = '0';
+              modalContent.style.transform = 'translateY(-20px)';
+              setTimeout(() => {
+                modal.style.display = 'none';
+                // Reset the header for the next time they open the modal
+                if (header) {
+                  header.style.display = 'block';
+                  // small delay before restoring opacity so it doesn't flash
+                  setTimeout(() => { header.style.opacity = '1'; }, 50);
+                }
+              }, 300);
+            }
+          }, 3000);
         }
       });
     </script>

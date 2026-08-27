@@ -8728,9 +8728,28 @@ window.addEventListener('load', () => {
     <!-- Close Button -->
     <button id="xy-modal-close" style="position: absolute; top: 15px; right: 15px; background: #ef4444; border: 2px solid #ffffff; font-size: 22px; font-weight: bold; cursor: pointer; color: #ffffff; z-index: 100; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">&times;</button>
     
-    <!-- Tally Form with Full Title, Logo, Headers, and Consent Checkbox -->
-    <iframe src="https://tally.so/embed/zx5bDM?alignLeft=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/zx5bDM?alignLeft=1&dynamicHeight=1" loading="lazy" width="100%" height="750" frameborder="0" marginheight="0" marginwidth="0" title="DocWind - Medical SEO Consultation" style="border: none; width: 100%; min-height: 700px; background: transparent;"></iframe>
+        <!-- Custom Modal Header that hides on submit -->
+    <div id="xy-modal-header" style="text-align: center; margin-bottom: 20px; padding-top: 10px; transition: opacity 0.3s ease;">
+      <img src="./docwind-icon.jpg" alt="DocWind Logo" style="width: 70px; height: 70px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+      <h3 style="margin-top: 0; font-family: 'Inter', sans-serif; color: #ffffff; font-size: 26px; font-weight: 800; line-height: 1.2;">DocWind - Medical SEO Consultation</h3>
+    </div>
+
+    <!-- Tally Form with hidden built-in title -->
+    <iframe src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="DocWind Form" style="border: none; width: 100%; min-height: 600px; background: transparent;"></iframe>
     <script async src="https://tally.so/widgets/embed.js"></script>
+    
+    <script>
+      // Listen for Tally form submission to hide the logo and title instantly
+      window.addEventListener('message', (e) => {
+        if (typeof e.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
+          const header = document.getElementById('xy-modal-header');
+          if (header) {
+            header.style.opacity = '0';
+            setTimeout(() => { header.style.display = 'none'; }, 300);
+          }
+        }
+      });
+    </script>
     
   </div>
 </div>

@@ -8739,33 +8739,11 @@ window.addEventListener('load', () => {
     <script async src="https://tally.so/widgets/embed.js"></script>
     
         <script>
-      // Listen for Tally form submission to hide the logo and title instantly, and auto-close after 3 seconds
+      // Listen for Tally form submission and redirect immediately to Calendly
       window.addEventListener('message', (e) => {
         if (typeof e.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
-          const header = document.getElementById('xy-modal-header');
-          if (header) {
-            header.style.opacity = '0';
-            setTimeout(() => { header.style.display = 'none'; }, 300);
-          }
-          
-          // Auto-close the entire modal after 3 seconds to hide Tally branding
-          setTimeout(() => {
-            const modal = document.getElementById('xy-master-modal');
-            const modalContent = document.getElementById('xy-modal-content');
-            if (modal && modalContent) {
-              modalContent.style.opacity = '0';
-              modalContent.style.transform = 'translateY(-20px)';
-              setTimeout(() => {
-                modal.style.display = 'none';
-                // Reset the header for the next time they open the modal
-                if (header) {
-                  header.style.display = 'block';
-                  // small delay before restoring opacity so it doesn't flash
-                  setTimeout(() => { header.style.opacity = '1'; }, 50);
-                }
-              }, 300);
-            }
-          }, 3000);
+          // Immediately redirect the top-level window to the Calendly booking page
+          window.location.href = 'https://calendly.com/stewartbraylan/meet';
         }
       });
     </script>

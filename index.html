@@ -8727,53 +8727,36 @@ window.addEventListener('load', () => {
   
 <!-- DocWind Premium Master Popup Modal -->
 <div id="xy-master-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 999999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
-  <div style="background: #1e1e1e; width: 92%; max-width: 680px; max-height: 92vh; border-radius: 10px; border: 1px solid #333333; display: flex; flex-direction: column; overflow: hidden; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.9); transform: translateY(20px); transition: transform 0.3s ease;" id="xy-modal-content">
+  <div style="background: #000000; width: 92%; max-width: 680px; max-height: 92vh; border-radius: 16px; border: 1px solid rgba(255,255,255,0.18); display: block; overflow-y: auto; overflow-x: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95); transform: translateY(20px); transition: transform 0.3s ease; padding: 25px 15px 15px 15px;" id="xy-modal-content">
     
-    <!-- VSCode Header Bar -->
-    <div style="background: #2d2d2d; height: 35px; width: 100%; display: flex; align-items: center; padding: 0 15px; border-bottom: 1px solid #111111; position: relative; flex-shrink: 0;">
-      <!-- Mac Window Controls -->
-      <div style="display: flex; gap: 8px;">
-        <div id="xy-modal-close" style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"></div>
-        <div style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></div>
-        <div style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f;"></div>
-      </div>
-      <!-- VSCode Title -->
-      <div style="position: absolute; left: 50%; transform: translateX(-50%); color: #969696; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px;">
-        patient-acquisition.js - Visual Studio Code
-      </div>
+    <!-- Close Button -->
+    <button id="xy-modal-close" style="position: absolute; top: 15px; right: 15px; background: #ef4444; border: 2px solid #ffffff; font-size: 22px; font-weight: bold; cursor: pointer; color: #ffffff; z-index: 100; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">&times;</button>
+    
+        <!-- Custom Modal Header that hides on submit -->
+    <div id="xy-modal-header" style="text-align: center; margin-bottom: -15px; padding-top: 10px; transition: opacity 0.3s ease;">
+      <img src="./docwind-icon.jpg" alt="DocWind Logo" style="width: 70px; height: 70px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+      <h3 style="margin-top: 0; font-family: 'Inter', sans-serif; color: #ffffff; font-size: 26px; font-weight: 800; line-height: 1.2;">DocWind - Medical SEO Consultation</h3>
     </div>
 
-    <!-- Content Area (Scrollable) -->
-    <div style="overflow-y: auto; overflow-x: hidden; padding: 25px 15px 15px 15px; width: 100%; flex: 1;">
-      
-      <!-- Custom Modal Header -->
-      <div id="xy-modal-header" style="text-align: center; margin-bottom: -15px; padding-top: 5px; transition: opacity 0.3s ease;">
-        <img src="./docwind-icon.jpg" alt="DocWind Logo" style="width: 70px; height: 70px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-        <h3 style="margin-top: 0; font-family: 'Consolas', 'Courier New', monospace; color: #569cd6; font-size: 22px; font-weight: 700; line-height: 1.2;">
-          <span style="color: #c586c0;">function</span> <span style="color: #dcdcaa;">initiateSEO</span><span style="color: #ffd700;">()</span> {
-        </h3>
-        <p style="color: #6a9955; font-family: 'Consolas', 'Courier New', monospace; font-size: 14px; margin-top: 5px; margin-bottom: 0;">// Enter practice details to execute growth</p>
-      </div>
-
-      <!-- Tally Form with hidden built-in title -->
-      <iframe src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="DocWind Form" style="border: none; width: 100%; min-height: 600px; background: transparent; margin-top: -10px;"></iframe>
-      <script async src="https://tally.so/widgets/embed.js"></script>
-      
-      <script>
-        // Listen for Tally form submission and redirect immediately to Calendly
-        window.addEventListener('message', (e) => {
-          if (typeof e.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
-            window.location.href = 'https://calendly.com/stewartbraylan/meet';
-          }
-        });
-      </script>
-      
-    </div>
+    <!-- Tally Form with hidden built-in title -->
+    <iframe src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="DocWind Form" style="border: none; width: 100%; min-height: 600px; background: transparent; margin-top: -10px;"></iframe>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    
+        <script>
+      // Listen for Tally form submission and redirect immediately to Calendly
+      window.addEventListener('message', (e) => {
+        if (typeof e.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
+          // Immediately redirect the top-level window to the Calendly booking page
+          window.location.href = 'https://calendly.com/stewartbraylan/meet';
+        }
+      });
+    </script>
+    
   </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('xy-master-modal');
   const modalContent = document.getElementById('xy-modal-content');
   const closeBtn = document.getElementById('xy-modal-close');

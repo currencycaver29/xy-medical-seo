@@ -8208,7 +8208,724 @@ window.addEventListener('load', () => {
           </div>
         </div>
       </div>
-    </main>
+    
+<!-- DOCWIND ROI CALCULATOR SECTION -->
+<section id="docwind-roi" style="padding: 100px 20px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; font-family: 'Inter', sans-serif;">
+  <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+    
+    <!-- Left: Inputs -->
+    <div style="flex: 1; min-width: 320px;">
+      <h2 style="font-size: 36px; font-weight: 900; margin-bottom: 20px; letter-spacing: -0.5px; line-height: 1.2;">Calculate Your Practice's<br><span style="color: #38bdf8;">Growth Potential</span></h2>
+      <p style="font-size: 18px; color: #94a3b8; margin-bottom: 40px; line-height: 1.6;">See exactly how much revenue a top-tier Medical SEO campaign can generate for your clinic. Adjust the sliders below.</p>
+      
+      <div style="margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <label style="font-weight: 600; font-size: 16px;">Average Patient Value (LTV)</label>
+          <span id="roi-val-display" style="font-weight: 700; color: #38bdf8; font-size: 18px;">$3,000</span>
+        </div>
+        <input type="range" id="roi-val-slider" min="500" max="15000" step="500" value="3000" style="width: 100%; cursor: pointer; accent-color: #38bdf8; height: 8px; border-radius: 4px; background: #334155; outline: none; -webkit-appearance: none;">
+      </div>
+
+      <div style="margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <label style="font-weight: 600; font-size: 16px;">Current New Patients / Month (from Web)</label>
+          <span id="roi-pat-display" style="font-weight: 700; color: #38bdf8; font-size: 18px;">10</span>
+        </div>
+        <input type="range" id="roi-pat-slider" min="0" max="100" step="1" value="10" style="width: 100%; cursor: pointer; accent-color: #38bdf8; height: 8px; border-radius: 4px; background: #334155; outline: none; -webkit-appearance: none;">
+      </div>
+    </div>
+
+    <!-- Right: Results Dashboard -->
+    <div style="flex: 1; min-width: 320px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; backdrop-filter: blur(10px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+      <h3 style="font-size: 20px; font-weight: 600; color: #e2e8f0; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Projected Results (Month 6)</h3>
+      
+      <div style="margin-bottom: 25px;">
+        <div style="font-size: 14px; color: #94a3b8; margin-bottom: 5px;">New SEO Patients / Month</div>
+        <div id="roi-new-patients" style="font-size: 42px; font-weight: 800; color: #ffffff;">+35</div>
+      </div>
+      
+      <div style="margin-bottom: 25px;">
+        <div style="font-size: 14px; color: #94a3b8; margin-bottom: 5px;">Projected Monthly Revenue Increase</div>
+        <div id="roi-new-revenue" style="font-size: 48px; font-weight: 900; color: #10b981;">+$105,000</div>
+      </div>
+
+      <div style="margin-bottom: 30px;">
+        <div style="font-size: 14px; color: #94a3b8; margin-bottom: 5px;">Annualized Growth</div>
+        <div id="roi-annual" style="font-size: 24px; font-weight: 700; color: #38bdf8;">+$1,260,000 / yr</div>
+      </div>
+      
+      <a href="javascript:void(0);" class="hs-elevate-button" style="display: block; width: 100%; text-align: center; background: #38bdf8; color: #0f172a; font-weight: 800; padding: 18px 24px; border-radius: 8px; text-decoration: none; font-size: 18px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 25px -5px rgba(56,189,248,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">Claim Your Free Audit</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const valSlider = document.getElementById('roi-val-slider');
+      const patSlider = document.getElementById('roi-pat-slider');
+      const valDisplay = document.getElementById('roi-val-display');
+      const patDisplay = document.getElementById('roi-pat-display');
+      
+      const outPatients = document.getElementById('roi-new-patients');
+      const outRev = document.getElementById('roi-new-revenue');
+      const outAnnual = document.getElementById('roi-annual');
+
+      function formatMoney(num) {
+        return '
+
+    <div
+      data-global-resource-path="@hubspot/elevate/templates/partials/footer.hubl.html"
+    >
+      <footer class="hs-elevate-footer">
+        <div class="container-fluid">
+          <div class="row-fluid-wrapper">
+            <div class="row-fluid">
+              <div
+                class="span12 widget-span widget-type-cell"
+                style=""
+                data-widget-type="cell"
+                data-x="0"
+                data-w="12"
+              >
+                <div
+                  class="row-fluid-wrapper row-depth-1 row-number-1 footer-row-0-background-color dnd-section footer-row-0-padding footer-row-0-background-layers"
+                >
+                  <div class="row-fluid">
+                    <div
+                      class="span12 widget-span widget-type-cell dnd-column"
+                      style=""
+                      data-widget-type="cell"
+                      data-x="0"
+                      data-w="12"
+                    >
+                      <div
+                        class="row-fluid-wrapper row-depth-1 row-number-2 footer-column-1-row-0-margin dnd-row"
+                      >
+                        <div class="row-fluid">
+                          <div
+                            class="span4 widget-span widget-type-custom_widget dnd-module"
+                            style=""
+                            data-widget-type="custom_widget"
+                            data-x="0"
+                            data-w="4"
+                          >
+                            <div
+                              id="hs_cos_wrapper_footer-module-2"
+                              class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-space"
+                              style=""
+                              data-hs-cos-general-type="widget"
+                              data-hs-cos-type="module"
+                            >
+                              <span class="hs-horizontal-spacer"></span>
+                            </div>
+                          </div>
+                          <!--end widget-span -->
+                          <div
+                            class="span4 widget-span widget-type-custom_widget footer-module-3-flexbox-positioning dnd-module"
+                            style=""
+                            data-widget-type="custom_widget"
+                            data-x="4"
+                            data-w="4"
+                          >
+                            <div
+                              id="hs_cos_wrapper_footer-module-3"
+                              class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-logo"
+                              style=""
+                              data-hs-cos-general-type="widget"
+                              data-hs-cos-type="module"
+                            >
+                              <span
+                                id="hs_cos_wrapper_footer-module-3_hs_logo_widget"
+                                class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo"
+                                style=""
+                                data-hs-cos-general-type="widget"
+                                data-hs-cos-type="logo"
+                                ><a
+                                  href="#"
+                                  id="hs-link-footer-module-3_hs_logo_widget"
+                                  style="border-width: 0px; border: 0px"
+                                  ><img src="./docwind-logo-full.jpg" alt="DocWind Logo" style="height: 120px; width: auto; background: #fff; padding: 15px 25px; border-radius: 12px;" /></a
+                                ></span
+                              >
+                            </div>
+                          </div>
+                          <!--end widget-span -->
+                          <div
+                            class="span4 widget-span widget-type-custom_widget dnd-module"
+                            style=""
+                            data-widget-type="custom_widget"
+                            data-x="8"
+                            data-w="4"
+                          >
+                            <div
+                              id="hs_cos_wrapper_footer-module-4"
+                              class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-space"
+                              style=""
+                              data-hs-cos-general-type="widget"
+                              data-hs-cos-type="module"
+                            >
+                              <span class="hs-horizontal-spacer"></span>
+                            </div>
+                          </div>
+                          <!--end widget-span -->
+                        </div>
+                        <!--end row-->
+                      </div>
+                      <!--end row-wrapper -->
+
+                      <div
+                        class="row-fluid-wrapper row-depth-1 row-number-3 dnd-row"
+                      >
+                        <div class="row-fluid">
+                          <div
+                            class="span12 widget-span widget-type-custom_widget dnd-module"
+                            style=""
+                            data-widget-type="custom_widget"
+                            data-x="0"
+                            data-w="12"
+                          >
+                            <div
+                              id="hs_cos_wrapper_footer-module-6"
+                              class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module"
+                              style=""
+                              data-hs-cos-general-type="widget"
+                              data-hs-cos-type="module"
+                            >
+                              <link
+                                rel="stylesheet"
+                                href="https://48752163.fs1.hubspotusercontent-na1.net/hubfs/48752163/raw_assets/cms-elevate-theme/master/2241/js_client_assets/assets/index-CwxSt1Vd.css"
+                              />
+                              <div
+                                class="hs-elevate-social-follow _hs-elevate-social-follow_el603_1"
+                                style="
+                                  --hsElevate--socialFollowIcon__padding: var(
+                                    --hsElevate--spacing--10,
+                                    10px
+                                  );
+                                  --hsElevate--socialFollowIcon__size: var(
+                                    --hsElevate--icon--small__size
+                                  );
+                                  --hsElevate--socialFollowIcon__shape: var(
+                                    --hsElevate-circle
+                                  );
+                                  --hsElevate--socialFollowIcon__gap: var(
+                                    --hsElevate--spacing--12,
+                                    12px
+                                  );
+                                  --hsElevate--socialFollow__justifyContent: center;
+                                  --hsElevate--socialFollowIcon__backgroundColor: var(
+                                    --hsElevate--button--accent__backgroundColor
+                                  );
+                                  --hsElevate--socialFollowIcon__color: var(
+                                    --hsElevate--button--accent__textColor
+                                  );
+                                  --hsElevate--socialFollowIcon__borderColor: var(
+                                    --hsElevate--button--accent__borderColor
+                                  );
+                                  --hsElevate--socialFollowIcon__borderWidth: var(
+                                    --hsElevate--button--accent__borderThickness
+                                  );
+                                  --hsElevate--socialFollowIcon__hover--backgroundColor: var(
+                                    --hsElevate--button--accent__hover--backgroundColor
+                                  );
+                                  --hsElevate--socialFollowIcon__hover--color: var(
+                                    --hsElevate--button--accent__hover--textColor
+                                  );
+                                  --hsElevate--socialFollowIcon__hover--borderColor: var(
+                                    --hsElevate--button--accent__hover--borderColor
+                                  );
+                                  --hsElevate--socialFollowIcon__hover--borderWidth: var(
+                                    --hsElevate--button--accent__hover--borderThickness
+                                  );
+                                  --hsElevate--socialFollowIcon__active--backgroundColor: var(
+                                    --hsElevate--button--accent__active--backgroundColor
+                                  );
+                                  --hsElevate--socialFollowIcon__active--color: var(
+                                    --hsElevate--button--accent__active--textColor
+                                  );
+                                  --hsElevate--socialFollowIcon__active--borderColor: var(
+                                    --hsElevate--button--accent__active--borderColor
+                                  );
+                                  --hsElevate--socialFollowIcon__active--borderWidth: var(
+                                    --hsElevate--button--accent__active--borderThickness
+                                  );
+                                "
+                              >
+                                <a
+                                  class="hs-elevate-social-follow__link _hs-elevate-social-follow__link_el603_9"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="https://www.linkedin.com"
+                                  aria-label="Follow us on LinkedIn"
+                                  ><svg
+                                    version="1.0"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewbox="0 0 448 512"
+                                    aria-hidden="true"
+                                    class="hs-elevate-social-follow__icon _hs-elevate-social-follow__icon_el603_50"
+                                  >
+                                    <path
+                                      d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                                    ></path></svg></a
+                                ><a
+                                  class="hs-elevate-social-follow__link _hs-elevate-social-follow__link_el603_9"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="https://www.facebook.com"
+                                  aria-label="Follow us on Facebook"
+                                  ><svg
+                                    version="1.0"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewbox="0 0 320 512"
+                                    aria-hidden="true"
+                                    class="hs-elevate-social-follow__icon _hs-elevate-social-follow__icon_el603_50"
+                                  >
+                                    <path
+                                      d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                                    ></path></svg></a
+                                ><a
+                                  class="hs-elevate-social-follow__link _hs-elevate-social-follow__link_el603_9"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="https://www.twitter.com"
+                                  aria-label="Follow us on X"
+                                  ><svg
+                                    version="1.0"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewbox="0 0 512 512"
+                                    aria-hidden="true"
+                                    class="hs-elevate-social-follow__icon _hs-elevate-social-follow__icon_el603_50"
+                                  >
+                                    <path
+                                      d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+                                    ></path></svg></a
+                                ><a
+                                  class="hs-elevate-social-follow__link _hs-elevate-social-follow__link_el603_9"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="https://www.instagram.com"
+                                  aria-label="Follow us on Instagram"
+                                  ><svg
+                                    version="1.0"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewbox="0 0 448 512"
+                                    aria-hidden="true"
+                                    class="hs-elevate-social-follow__icon _hs-elevate-social-follow__icon_el603_50"
+                                  >
+                                    <path
+                                      d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                                    ></path></svg></a
+                                ><a
+                                  class="hs-elevate-social-follow__link _hs-elevate-social-follow__link_el603_9"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="https://www.tiktok.com"
+                                  aria-label="Follow us on TikTok"
+                                  ><svg
+                                    version="1.0"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewbox="0 0 448 512"
+                                    aria-hidden="true"
+                                    class="hs-elevate-social-follow__icon _hs-elevate-social-follow__icon_el603_50"
+                                  >
+                                    <path
+                                      d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"
+                                    ></path></svg
+                                ></a>
+                              </div>
+                              <script type="text/javascript">
+                                window.__hsEnvConfig = {
+                                  hsDeployed: true,
+                                  hsEnv: "prod",
+                                  hsJSRGates: [
+                                    "CMS:JSRenderer:SeparateIslandRenderOption",
+                                    "CMS:JSRenderer:GetServerSideProps",
+                                    "CMS:JSRenderer:EnvAllowlistRenderTime",
+                                    "CMS:JSRenderer:EnvAllowlist",
+                                  ],
+                                  hublet: "na1",
+                                  portalID: 43658128,
+                                };
+                                window.__hsServerPageUrl =
+                                  "https:\u002F\u002Fdocwind.com";
+                                window.__hsBasePath = "\u002Fmedical-seo";
+                              </script>
+                            </div>
+                          </div>
+                          <!--end widget-span -->
+                        </div>
+                        <!--end row-->
+                      </div>
+                      <!--end row-wrapper -->
+                    </div>
+                    <!--end widget-span -->
+                  </div>
+                  <!--end row-->
+                </div>
+                <!--end row-wrapper -->
+
+                <div
+                  class="row-fluid-wrapper row-depth-1 row-number-4 footer-row-1-force-full-width-section dnd-section footer-row-1-padding footer-row-1-background-layers footer-row-1-background-color"
+                >
+                  <div class="row-fluid">
+                    <div
+                      class="span12 widget-span widget-type-custom_widget dnd-module"
+                      style=""
+                      data-widget-type="custom_widget"
+                      data-x="0"
+                      data-w="12"
+                    >
+                      <div
+                        id="hs_cos_wrapper_footer-module-7"
+                        class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module"
+                        style=""
+                        data-hs-cos-general-type="widget"
+                        data-hs-cos-type="module"
+                      >
+                        <hr />
+                      </div>
+                    </div>
+                    <!--end widget-span -->
+                  </div>
+                  <!--end row-->
+                </div>
+                <!--end row-wrapper -->
+
+                <div
+                  class="row-fluid-wrapper row-depth-1 row-number-5 dnd-section footer-row-2-background-layers footer-row-2-background-color footer-row-2-padding"
+                >
+                  <div class="row-fluid">
+                    <div
+                      class="span12 widget-span widget-type-custom_widget dnd-module"
+                      style=""
+                      data-widget-type="custom_widget"
+                      data-x="0"
+                      data-w="12"
+                    >
+                      <div
+                        id="hs_cos_wrapper_footer-module-8"
+                        class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module"
+                        style=""
+                        data-hs-cos-general-type="widget"
+                        data-hs-cos-type="module"
+                      >
+                        <link
+                          rel="stylesheet"
+                          href="https://48752163.fs1.hubspotusercontent-na1.net/hubfs/48752163/raw_assets/cms-elevate-theme/master/2241/js_client_assets/assets/index-AJ-XpXDx.css"
+                        />
+                        <div
+                          class="hs-elevate-rich-text _hs-elevate-rich-text_6uweg_1"
+                          style="
+                            --hsElevate--richText__textColor: var(
+                              --hsElevate--section--darkSection--1__textColor
+                            );
+                            --hsElevate--richText__accentColor: var(
+                              --hsElevate--section--darkSection--1__accentColor
+                            );
+                            --hsElevate--richText__linkColor: var(
+                              --hsElevate--section--darkSection--1--link__fontColor
+                            );
+                            --hsElevate--richText__textDecoration: var(
+                              --hsElevate--section--darkSection--1--link__textDecoration
+                            );
+                            --hsElevate--richText__textDecorationColor: var(
+                              --hsElevate--section--darkSection--1--link__textDecorationColor
+                            );
+                            --hsElevate--richText__linkHoverColor: var(
+                              --hsElevate--section--darkSection--1--link__hover--fontColor
+                            );
+                            --hsElevate--richText__linkHoverTextDecoration: var(
+                              --hsElevate--section--darkSection--1--link__hover--textDecoration
+                            );
+                            --hsElevate--richText__linkHoverTextDecorationColor: var(
+                              --hsElevate--section--darkSection--1--link__hover--textDecorationColor
+                            );
+                            --hsElevate--blockquote__textColor: var(
+                              --hsElevate--section--darkSection--1--blockquote__textColor
+                            );
+                            --hsElevate--blockquote__backgroundColor: var(
+                              --hsElevate--section--darkSection--1--blockquote__backgroundColor
+                            );
+                            --hsElevate--blockquote__accentColor: var(
+                              --hsElevate--section--darkSection--1--blockquote__accentColor
+                            );
+                          "
+                          data-hs-token="module.footer-module-8.richTextContentHTML"
+                        >
+                          <div style="text-align: center">
+                            <a style="text-decoration: none">Privacy Policy</a>
+                            · <a style="text-decoration: none">Legal</a> ·
+                            <span>© 2026. All rights reserved.</span>
+                          </div>
+                        </div>
+                        <script type="text/javascript">
+                          window.__hsEnvConfig = {
+                            hsDeployed: true,
+                            hsEnv: "prod",
+                            hsJSRGates: [
+                              "CMS:JSRenderer:SeparateIslandRenderOption",
+                              "CMS:JSRenderer:GetServerSideProps",
+                              "CMS:JSRenderer:EnvAllowlistRenderTime",
+                              "CMS:JSRenderer:EnvAllowlist",
+                            ],
+                            hublet: "na1",
+                            portalID: 43658128,
+                          };
+                          window.__hsServerPageUrl =
+                            "https:\u002F\u002Fdocwind.com";
+                          window.__hsBasePath = "\u002Fmedical-seo";
+                        </script>
+                      </div>
+                    </div>
+                    <!--end widget-span -->
+                  </div>
+                  <!--end row-->
+                </div>
+                <!--end row-wrapper -->
+              </div>
+              <!--end widget-span -->
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- HubSpot performance collection script -->
+    
+    <script>
+      var hsVars = hsVars || {};
+      hsVars["language"] = "en";
+    </script>
+
+    
+    <!-- Start of Web Interactives Embed Code -->
+    <script
+      defer
+      src="https://js.hubspot.com/web-interactives-embed.js"
+      type="text/javascript"
+      id="hubspot-web-interactives-loader"
+      data-loader="hs-previewer"
+      data-hsjs-portal="43658128"
+      data-hsjs-env="prod"
+      data-hsjs-hublet="na1"
+    ></script>
+    <!-- End of Web Interactives Embed Code -->
+    <script src="https://7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/module_assets/1/-98459521332/1786551717201/module_image_slider_gallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.2/dist/js/splide.min.js"></script>
+
+    
+
+    
+
+    
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KTX22S4"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KTX22S4"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Dynamically target major elements for animation
+        const targets = document.querySelectorAll(
+          ".dnd-section, h1, h2, h3, .hs-button, img",
+        );
+
+        // Add the base class
+        targets.forEach((el) => {
+          // Skip header/navigation elements so they don't fade in weirdly
+          if (
+            !el.closest("header") &&
+            !el.closest(".header") &&
+            !el.closest(".site-header")
+          ) {
+            el.classList.add("xy-reveal-up");
+          }
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Add slight delay based on element's position on screen for staggered effect
+                setTimeout(() => {
+                  entry.target.classList.add("xy-active");
+                }, 100);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          },
+        );
+
+        // Observe all targeted elements
+        document
+          .querySelectorAll(".xy-reveal-up")
+          .forEach((el) => observer.observe(el));
+      });
+    </script>
+  
+<!-- DocWind Premium Master Popup Modal -->
+<div id="xy-master-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 999999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
+  <div style="background: #000000; width: 92%; max-width: 680px; max-height: 92vh; border-radius: 16px; border: 1px solid rgba(255,255,255,0.18); display: block; overflow-y: auto; overflow-x: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95); transform: translateY(20px); transition: transform 0.3s ease; padding: 25px 15px 15px 15px;" id="xy-modal-content">
+    
+    <!-- Close Button -->
+    <button id="xy-modal-close" style="position: absolute; top: 15px; right: 15px; background: #ef4444; border: 2px solid #ffffff; font-size: 22px; font-weight: bold; cursor: pointer; color: #ffffff; z-index: 100; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">&times;</button>
+    
+        <!-- Custom Modal Header that hides on submit -->
+    <div id="xy-modal-header" style="text-align: center; margin-bottom: -15px; padding-top: 10px; transition: opacity 0.3s ease;">
+      <img src="./docwind-icon.jpg" alt="DocWind Logo" style="width: 70px; height: 70px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+      <h3 style="margin-top: 0; font-family: 'Inter', sans-serif; color: #ffffff; font-size: 26px; font-weight: 800; line-height: 1.2;">DocWind - Medical SEO Consultation</h3>
+    </div>
+
+    <!-- Tally Form with hidden built-in title -->
+    <iframe src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/zx5bDM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="DocWind Form" style="border: none; width: 100%; min-height: 600px; background: transparent; margin-top: -10px;"></iframe>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    
+        <script>
+      // Listen for Tally form submission and redirect immediately to Calendly
+      window.addEventListener('message', (e) => {
+        if (typeof e.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
+          // Immediately redirect the top-level window to the Calendly booking page
+          window.location.href = 'https://calendly.com/stewartbraylan/meet';
+        }
+      });
+    </script>
+    
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('xy-master-modal');
+  const modalContent = document.getElementById('xy-modal-content');
+  const closeBtn = document.getElementById('xy-modal-close');
+  
+  // Find all links that we disabled earlier
+  const buttons = document.querySelectorAll('a[href="javascript:void(0);"]');
+  
+  function openModal(e) {
+    e.preventDefault();
+    modal.style.display = 'flex';
+    // Small delay to allow display:flex to apply before transitioning opacity
+    setTimeout(() => {
+      modal.style.opacity = '1';
+      modalContent.style.transform = 'translateY(0)';
+    }, 10);
+  }
+  
+  function closeModal() {
+    modal.style.opacity = '0';
+    modalContent.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 300); // Wait for transition
+  }
+
+  // Wire buttons to open modal
+  buttons.forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+  
+  // Wire close button
+  closeBtn.addEventListener('click', closeModal);
+  
+  // Close if clicking outside the modal content
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) {
+      closeModal();
+    }
+  });
+});
+</script>
+
+
+<script>
+// DocWind Premium: Magnetic Buttons
+document.addEventListener("DOMContentLoaded", () => {
+  // Target all HubSpot buttons and our custom modal email button
+  const magneticElements = document.querySelectorAll('.hs-button, a[href^="https://mail.google.com"]');
+  
+  magneticElements.forEach((el) => {
+    // Add smooth transition for snapping back
+    el.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease, box-shadow 0.2s ease';
+    
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      // Calculate distance from center of button
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // Pull strength (how far it moves)
+      const pullX = 15; 
+      const pullY = 15;
+      
+      const moveX = (x / (rect.width / 2)) * pullX;
+      const moveY = (y / (rect.height / 2)) * pullY;
+      
+      el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      // Snap back to original position
+      el.style.transform = 'translate(0px, 0px)';
+    });
+  });
+});
+</script>
+</body>
+
+</html>
+ + num.toLocaleString('en-US');
+      }
+
+      function calculate() {
+        const val = parseInt(valSlider.value);
+        const pat = parseInt(patSlider.value);
+        
+        valDisplay.innerText = formatMoney(val);
+        patDisplay.innerText = pat.toString();
+
+        // Magic algorithm: Assuming SEO brings 3x current patients + baseline 15
+        const newPatients = Math.floor(pat * 2.5) + 15; 
+        const newMonthlyRev = newPatients * val;
+        const newAnnualRev = newMonthlyRev * 12;
+
+        outPatients.innerText = '+' + newPatients.toLocaleString();
+        outRev.innerText = '+' + formatMoney(newMonthlyRev);
+        outAnnual.innerText = '+' + formatMoney(newAnnualRev) + ' / yr';
+      }
+
+      valSlider.addEventListener('input', calculate);
+      patSlider.addEventListener('input', calculate);
+      
+      // Initialize
+      calculate();
+    });
+  </script>
+</section>
+<!-- END DOCWIND ROI CALCULATOR SECTION -->
+
+</main>
 
     <div
       data-global-resource-path="@hubspot/elevate/templates/partials/footer.hubl.html"

@@ -8929,6 +8929,51 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 <!-- END STICKY MOBILE BAR -->
 
+
+<!-- DOCWIND SCROLL ANIMATIONS -->
+<style>
+  .docwind-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .docwind-fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Add fade-up class to all major sections and cards
+    const elementsToAnimate = document.querySelectorAll('h2, h3, p, .hs-elevate-card, img, #docwind-roi');
+    elementsToAnimate.forEach(el => {
+      // Don't animate elements inside the modal or tiny things
+      if (!el.closest('#xy-master-modal') && !el.closest('.docwind-sticky-bar')) {
+        el.classList.add('docwind-fade-up');
+      }
+    });
+
+    // 2. Set up the Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          // Optional: stop observing once it has faded in so it doesn't repeat on scroll up
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    });
+
+    // 3. Observe all elements
+    document.querySelectorAll('.docwind-fade-up').forEach(el => observer.observe(el));
+  });
+</script>
+<!-- END SCROLL ANIMATIONS -->
+
 </body>
 
 </html>

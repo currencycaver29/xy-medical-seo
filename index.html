@@ -3874,6 +3874,66 @@ window.addEventListener('load', () => {
     </div>
 
     <main id="main-content">
+
+<!-- DOCWIND INFINITE MARQUEE -->
+<style>
+  .docwind-marquee-container {
+    background: #0ea5e9;
+    color: #ffffff;
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+    z-index: 10;
+  }
+  .docwind-marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: docwindMarquee 25s linear infinite;
+  }
+  .docwind-marquee-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+  }
+  .docwind-marquee-item::before {
+    content: "✦";
+    margin-right: 40px;
+    color: #bae6fd;
+    font-size: 14px;
+  }
+  @keyframes docwindMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .docwind-marquee-content:hover {
+    animation-play-state: paused;
+  }
+</style>
+<div class="docwind-marquee-container">
+  <div class="docwind-marquee-content">
+    <!-- Duplicate sets to make infinite scrolling seamless -->
+    <div class="docwind-marquee-item">Plastic Surgery</div>
+    <div class="docwind-marquee-item">Cosmetic Dentistry</div>
+    <div class="docwind-marquee-item">Med Spas</div>
+    <div class="docwind-marquee-item">Orthopedics</div>
+    <div class="docwind-marquee-item">Dermatology</div>
+    <div class="docwind-marquee-item">Fertility Clinics</div>
+    <div class="docwind-marquee-item">Plastic Surgery</div>
+    <div class="docwind-marquee-item">Cosmetic Dentistry</div>
+    <div class="docwind-marquee-item">Med Spas</div>
+    <div class="docwind-marquee-item">Orthopedics</div>
+    <div class="docwind-marquee-item">Dermatology</div>
+    <div class="docwind-marquee-item">Fertility Clinics</div>
+  </div>
+</div>
+<!-- END INFINITE MARQUEE -->
+
       <div class="container-fluid">
         <div class="row-fluid-wrapper">
           <div class="row-fluid">

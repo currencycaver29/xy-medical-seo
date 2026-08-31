@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://docwind.com/sitemap.xml

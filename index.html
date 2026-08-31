@@ -8892,6 +8892,43 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+<!-- DOCWIND STICKY MOBILE BAR -->
+<style>
+  .docwind-sticky-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 20px;
+    z-index: 999900;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+  }
+  @media (max-width: 768px) {
+    .docwind-sticky-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    body {
+      padding-bottom: 80px; /* Prevent footer from hiding behind bar */
+    }
+  }
+</style>
+<div class="docwind-sticky-bar">
+  <div style="color: #fff; font-family: 'Inter', sans-serif;">
+    <div style="font-size: 13px; font-weight: 600; color: #94a3b8;">Want more patients?</div>
+    <div style="font-size: 16px; font-weight: 800;">Get a Free Audit</div>
+  </div>
+  <a href="javascript:void(0);" class="hs-elevate-button" style="background: #38bdf8; color: #0f172a; font-weight: 800; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; box-shadow: 0 4px 15px rgba(56,189,248,0.4);">Claim Now</a>
+</div>
+<!-- END STICKY MOBILE BAR -->
+
 </body>
 
 </html>
